@@ -77,7 +77,7 @@ export default function About() {
         ease: 'power4.out' 
       }, '-=0.3')
       .from('.about-desc', { y: 20, opacity: 0, duration: 0.6 }, '-=0.4')
-      .from('.about-stat', { scale: 0.9, opacity: 0, stagger: 0.1, duration: 0.5 }, '-=0.2');
+      .from('.about-stat', { scale: 0.9, opacity: 0, stagger: 0.05, duration: 0.3 }, '-=0.2');
 
     // Parallax images
     gsap.to('.img-main', {
