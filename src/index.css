@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-neon-pink: #ff007a;
+  --color-neon-purple: #7a00ff;
+  --color-brand-red: #ff4d4d;
+  --color-deep-black: #0b0b0f;
+  --color-dark-gray: #111111;
+}
+
+:root {
+  --cursor-size: 20px;
+}
+
+body {
+  background-color: var(--color-deep-black);
+  color: white;
+  overflow-x: hidden;
+}
+
+.hero-edge-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 150px 50px rgba(10, 10, 10, 0.9);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.light-beam {
+  position: absolute;
+  top: -20%;
+  width: 150px;
+  height: 150%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 100%);
+  transform-origin: top center;
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.light-beam-left {
+  left: 15%;
+  transform: rotate(25deg);
+}
+
+.light-beam-right {
+  right: 15%;
+  transform: rotate(-25deg);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-pink);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.neon-text-pink {
+  text-shadow: 0 0 5px var(--color-neon-pink), 0 0 15px var(--color-neon-pink);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 5px var(--color-neon-purple), 0 0 15px var(--color-neon-purple);
+}
+
+.neon-border-pink {
+  box-shadow: 0 0 10px var(--color-neon-pink), inset 0 0 5px var(--color-neon-pink);
+}
+
+.neon-border-purple {
+  box-shadow: 0 0 10px var(--color-neon-purple), inset 0 0 5px var(--color-neon-purple);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.glass-panel:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.animate-float-particle {
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+}
+
+/* Gradient Border Animation */
+.gradient-border-card {
+  position: relative;
+  background: #0b0b0f;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.gradient-border-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(90deg, #7c5cff, #5ba8ff, #ff007f, #7c5cff);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gradient-border-card:hover::before {
+  opacity: 1;
+}
+
+/* Image Reveal Mask */
+.img-reveal-mask {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.img-reveal-mask.is-revealed {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+  will-change: box-shadow, border-color;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 25px rgba(255, 0, 122, 0.5);
+  border-color: rgba(255, 0, 122, 0.6);
+}
+
+.hover-glow-purple {
+  transition: all 0.3s ease;
+  will-change: box-shadow, border-color;
+}
+
+.hover-glow-purple:hover {
+  box-shadow: 0 0 25px rgba(122, 0, 255, 0.5);
+  border-color: rgba(122, 0, 255, 0.6);
+}
+
+.animated-divider {
+  width: 0;
+}
+
+.clip-path-slant {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.clip-path-slant-reverse {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Modern Logo Hover */
+.logo-modern-hover {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+}
+.logo-modern-hover:hover {
+  transform: scale(1.05) translateY(-2px);
+  filter: drop-shadow(0 8px 16px rgba(255, 0, 122, 0.4)) drop-shadow(0 2px 4px rgba(122, 0, 255, 0.3));
+}
+
+/* --- NEW MICRO-ANIMATIONS --- */
+
+/* Shimmer / Light Sweep Effect */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-25deg);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  pointer-events: none;
+}
+.shimmer-card:hover::after {
+  left: 200%;
+}
+
+/* Input Focus Underline Expansion */
+.input-underline {
+  position: relative;
+}
+.input-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-neon-pink);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateX(-50%);
+}
+.input-underline:focus-within::after {
+  width: 100%;
+}
+
+/* Magnetic Button Wrapper (CSS fallback, JS is better but this adds a nice pop) */
+.magnetic-pop {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.magnetic-pop:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* Icon Spin on Hover */
+.group:hover .icon-spin-hover {
+  transform: rotate(180deg) scale(1.1);
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.icon-spin-hover {
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Image Scale on Hover */
+.img-scale-hover {
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+.group:hover .img-scale-hover {
+  transform: scale(1.1);
+}
+
+.btn-press {
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.1s, background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.btn-press:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.testimonials-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* --- IMMERSIVE MODE --- */
+body.immersive-active .hero-edge-glow {
+  box-shadow: inset 0 0 200px 80px rgba(10, 10, 10, 0.95), inset 0 0 50px 10px rgba(122, 0, 255, 0.25);
+}
+
+body.immersive-active .glass-panel {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.immersive-active .glass-panel:hover {
+  box-shadow: 0 20px 60px rgba(122, 0, 255, 0.35);
+}
+
+/* --- HERO FUTURISTIC ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.fade-in-subtitle {
+  animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+  50% { transform: translateY(-100px) translateX(20px); opacity: 0.8; }
+}
+
+.animate-float {
+  animation: float-particle infinite ease-in-out;
+}
+
+/* Reduce animations on mobile */
+@media (max-width: 768px) {
+  .hero-strip {
+    display: none !important;
+  }
+  .img-parallax, .hero-bg, .services-bg, .leadership-bg {
+    transform: none !important;
+  }
+}
+

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diamond Music | Produtora de Eventos</title>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://raw.githubusercontent.com" />
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" />
+    
+    <!-- Preload critical images (Logo and Hero Background) -->
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/eloi-balabem/diamond/main/fundo%20transparente.gif" />
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=60&w=1600&auto=format&fit=crop" />
+
+    <script>
+      // Patch to prevent "Cannot set property fetch of #<Window>" error
+      try {
+        const originalFetch = window.fetch;
+        Object.defineProperty(window, 'fetch', {
+          get: function() { return originalFetch; },
+          set: function(v) { console.warn('Ignored attempt to overwrite window.fetch'); },
+          configurable: true
+        });
+      } catch (e) {
+        console.warn('Could not patch window.fetch', e);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
