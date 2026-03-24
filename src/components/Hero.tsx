@@ -18,7 +18,7 @@ export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Generate random particles
-  const particles = Array.from({ length: 30 }).map((_, i) => ({
+  const particles = Array.from({ length: 80 }).map((_, i) => ({
     id: i,
     size: Math.random() * 4 + 1,
     left: Math.random() * 100,
@@ -114,7 +114,7 @@ export default function Hero() {
         <img 
           src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=60&w=1600&auto=format&fit=crop" 
           alt="Festival Crowd" 
-          className="w-full h-full object-cover opacity-70"
+          className="w-full h-full object-cover opacity-70 animate-subtle-zoom"
           fetchPriority="high"
           decoding="sync"
         />
@@ -177,19 +177,6 @@ export default function Hero() {
         <p className="hero-subtitle text-base md:text-xl text-gray-300 font-light tracking-wide mb-12 max-w-2xl mx-auto drop-shadow-md">
           A fusão perfeita entre tecnologia, arte e impacto.
         </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button 
-            onClick={() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' })}
-            onMouseEnter={() => {
-              const img1 = new Image(); img1.src = 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=60&w=800&auto=format&fit=crop';
-              const img2 = new Image(); img2.src = 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=60&w=800&auto=format&fit=crop';
-            }}
-            className="hero-btn btn-press w-full sm:w-auto px-6 py-3 text-sm border border-white/10 bg-white/10 backdrop-blur-md text-white font-bold uppercase tracking-widest hover:bg-white/20 hover:border-neon-pink hover:text-white transition-all duration-300 hover-glow rounded-full magnetic-pop"
-          >
-            Ver Projetos
-          </button>
-        </div>
       </div>
 
       {/* Scroll Indicator */}

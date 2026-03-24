@@ -190,15 +190,33 @@ export default function Home() {
       <main>
         <Hero />
         <Suspense fallback={<div className="h-32 flex items-center justify-center"><div className="w-8 h-8 border-2 border-neon-pink border-t-transparent rounded-full animate-spin"></div></div>}>
-          <About />
-          <Leadership />
-          <Services />
-          <InternationalArtistsSection />
-          <Events />
-          <Experience />
-          <Testimonials />
-          <HeroFuturistic />
-          <Contact />
+          <div className="organic-divider-bottom">
+            <About />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <Leadership />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <Services />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <InternationalArtistsSection />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <Events />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <Experience />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <Testimonials />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <HeroFuturistic />
+          </div>
+          <div className="organic-divider-top">
+            <Contact />
+          </div>
         </Suspense>
       </main>
       <Suspense fallback={null}>

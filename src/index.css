@@ -189,28 +189,22 @@ body {
   filter: drop-shadow(0 8px 16px rgba(255, 0, 122, 0.4)) drop-shadow(0 2px 4px rgba(122, 0, 255, 0.3));
 }
 
-/* --- NEW MICRO-ANIMATIONS --- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 
-/* Shimmer / Light Sweep Effect */
-.shimmer-card {
-  position: relative;
-  overflow: hidden;
+@keyframes marquee2 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
 }
-.shimmer-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
-  transform: skewX(-25deg);
-  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 10;
-  pointer-events: none;
+
+.animate-marquee {
+  animation: marquee 80s linear infinite;
 }
-.shimmer-card:hover::after {
-  left: 200%;
+
+.animate-marquee2 {
+  animation: marquee2 80s linear infinite;
 }
 
 /* Input Focus Underline Expansion */
@@ -298,14 +292,40 @@ body.immersive-active .glass-panel:hover {
   box-shadow: 0 20px 60px rgba(122, 0, 255, 0.35);
 }
 
-/* --- HERO FUTURISTIC ANIMATIONS --- */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes noise {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -5% -10%; }
+  20% { background-position: -15% 5%; }
+  30% { background-position: 7% -25%; }
+  40% { background-position: 20% 25%; }
+  50% { background-position: -25% 10%; }
+  60% { background-position: 15% 5%; }
+  70% { background-position: 0% 15%; }
+  80% { background-position: 25% 35%; }
+  90% { background-position: -10% 10%; }
+}
+
+.noise-gradient-bg {
+  background: linear-gradient(135deg, #4f004f, #0b0b0f, #004f4f);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  position: relative;
+}
+
+.noise-gradient-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: noise 0.5s steps(10) infinite;
+  pointer-events: none;
 }
 
 .fade-in {
@@ -314,6 +334,21 @@ body.immersive-active .glass-panel:hover {
 
 .fade-in-subtitle {
   animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 122, 0.3);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 0, 122, 0.6);
 }
 
 @keyframes float-particle {
@@ -335,12 +370,22 @@ body.immersive-active .glass-panel:hover {
   }
 }
 
-@keyframes subtlePulse {
-  0%, 100% { opacity: 0.95; }
-  50% { opacity: 1; }
+@keyframes subtleGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 122, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(255, 0, 122, 0.8); }
 }
-.animate-subtle-pulse {
-  animation: subtlePulse 4s ease-in-out infinite;
+.animate-subtle-glow {
+  animation: subtleGlow 3s ease-in-out infinite;
+}
+
+@keyframes subtleZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-subtle-zoom {
+  animation: subtleZoom 20s ease-in-out infinite;
 }
 
 @keyframes gentle-bob {
@@ -348,29 +393,137 @@ body.immersive-active .glass-panel:hover {
   50% { transform: translateY(-5px); }
 }
 
+@keyframes subtle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* --- 3D GLOBE --- */
+@keyframes spin-earth {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.globe-3d {
+  position: relative;
+  border-radius: 50%;
+  background: #0a0005; /* Very dark pink/black ocean */
+  box-shadow: 
+    inset -15px -15px 25px rgba(0,0,0,0.9),
+    inset 5px 5px 20px rgba(255,0,122,0.5),
+    0 0 30px rgba(255,0,122,0.6);
+  overflow: hidden;
+}
+
+.globe-3d-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-color: #ff007a; /* Neon pink landmasses */
+  -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/World_map_blank_black.png/1024px-World_map_blank_black.png');
+  -webkit-mask-size: 50% 100%;
+  -webkit-mask-repeat: repeat-x;
+  mask-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/World_map_blank_black.png/1024px-World_map_blank_black.png');
+  mask-size: 50% 100%;
+  mask-repeat: repeat-x;
+  animation: spin-earth 20s linear infinite;
+  opacity: 0.85;
+}
+
+.globe-3d-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5) 0%, rgba(255,0,122,0.2) 30%, rgba(0,0,0,0.9) 90%);
+  pointer-events: none;
+}
+
 /* --- STACKED ARTIST CARDS --- */
 .stack {
   position: relative;
   width: 100%;
-  max-width: 900px;
   height: 340px;
   display: flex;
   align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.stack::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari/Edge */
 }
 
 .card {
   position: relative;
-  width: 220px;
+  flex: 1;
+  min-width: 100px;
   height: 300px;
-  margin-left: -120px; /* SOBREPOSIÇÃO CONTROLADA */
+  margin-left: -20px; 
   border-radius: 18px;
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s ease, box-shadow 0.4s ease;
   z-index: 1;
+  flex-shrink: 0;
 }
 
 .card:first-child {
   margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .stack {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    height: 250px; /* Ajuste de altura para mobile */
+    scrollbar-width: thin; /* Show scrollbar for Firefox */
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    padding-right: 80px;
+  }
+
+  .stack::-webkit-scrollbar {
+    display: block; /* Show scrollbar for Chrome/Safari/Edge */
+    height: 3px; /* Very thin */
+  }
+
+  .stack::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--color-neon-pink), var(--color-neon-purple));
+    border-radius: 10px;
+  }
+
+  .stack::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .card {
+    width: 200px; /* Aumentado para mobile */
+    height: 250px; /* Aumentado para mobile */
+    margin-left: -20px; /* Menos sobreposição */
+    left: 0 !important;
+    transform: none !important;
+  }
+  
+  .card:first-child {
+    margin-left: 0;
+  }
 }
 
 /* IMAGEM */
@@ -390,6 +543,7 @@ body.immersive-active .glass-panel:hover {
     rgba(0,0,0,0.3),
     transparent
   );
+  transition: opacity 0.3s ease;
 }
 
 /* TEXTO */
@@ -398,6 +552,7 @@ body.immersive-active .glass-panel:hover {
   bottom: 16px;
   left: 16px;
   color: white;
+  transition: transform 0.3s ease;
 }
 
 .content h3 {
@@ -414,35 +569,28 @@ body.immersive-active .glass-panel:hover {
 /* HOVER INTELIGENTE */
 /* quando passa o mouse no container */
 .stack:hover .card {
-  transform: translateX(-40px);
+  transform: translateX(-20px);
 }
 
 /* card ativo (o que está com mouse) */
 .card:hover {
-  transform: scale(1.08) !important;
-  z-index: 10;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  flex: 3; /* Expand significantly more than others */
+  transform: scale(1.02) !important; /* Reduce scale to keep it contained */
+  z-index: 20;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card:hover .overlay {
+  opacity: 0.2;
+}
+
+.card:hover .content {
+  transform: translateY(-5px);
 }
 
 /* cards à direita se afastam */
 .card:hover ~ .card {
-  transform: translateX(120px);
-}
-
-@media (max-width: 768px) {
-  .stack {
-    display: flex;
-    overflow-x: auto;
-    width: 100%;
-  }
-
-  .card {
-    position: relative;
-    left: 0 !important;
-    transform: none !important;
-    flex-shrink: 0;
-    margin-left: -80px;
-  }
+  transform: translateX(130px);
 }
 
 @keyframes glow {

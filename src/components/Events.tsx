@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,27 +11,38 @@ const events = [
   {
     title: "Neon Horizon",
     location: "SÃO PAULO, BRASIL",
-    image: "https://images.unsplash.com/photo-1540039155732-6847363222ce?q=60&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop",
     large: true
   },
   {
     title: "Electric Dreams",
     location: "RIO DE JANEIRO, BRASIL",
-    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=60&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop",
     large: false
   },
   {
     title: "Midnight Sun",
     location: "LISBOA, PORTUGAL",
-    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=60&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86578?q=80&w=800&auto=format&fit=crop",
     large: false
   },
   {
     title: "Urban Pulse",
     location: "MIAMI, EUA",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=60&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop",
     wide: true
   }
+];
+
+const artists = [
+  "Adele", "Celine Dion", "Paul McCartney", "Beyoncé", "Taylor Swift", "Ed Sheeran", "Coldplay", "Billie Eilish", 
+  "Olivia Rodrigo", "Harry Styles", "Usher", "Foo Fighters", "Red Hot Chili Peppers", "Arctic Monkeys", "The Killers", 
+  "Imagine Dragons", "Blackpink", "BTS", "Stray Kids", "Ateez", "NewJeans", "Alicia Keys", "Eminem", "Mary J. Blige", 
+  "Janet Jackson", "Christina Aguilera", "P!nk", "Jennifer Lopez", "Justin Timberlake", "Lenny Kravitz", "Sting", 
+  "Shania Twain", "Mariah Carey", "Gwen Stefani", "Katy Perry", "Shakira", "U2", "Madonna", "Bon Jovi", 
+  "Bruce Springsteen", "Rod Stewart", "Stevie Wonder", "Diana Ross", "KC and the Sunshine Band", "Eagles", 
+  "Gipsy Kings", "Earth, Wind & Fire", "Chicago", "The Beach Boys", "Kool & the Gang", "Duran Duran", 
+  "Depeche Mode", "Pet Shop Boys", "Simple Minds", "A-ha"
 ];
 
 export default function Events() {
@@ -85,7 +97,7 @@ export default function Events() {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-16">
           
           {/* Left Large Card */}
           <div className="event-card relative rounded-2xl overflow-hidden h-[400px] lg:h-[520px] group cursor-pointer">
@@ -95,6 +107,7 @@ export default function Events() {
               alt={events[0].title} 
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
+              referrerPolicy="no-referrer"
             />
             <div className="absolute bottom-6 left-6 z-20">
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-1 group-hover:text-neon-pink transition-colors">{events[0].title}</h3>
@@ -115,6 +128,7 @@ export default function Events() {
                   alt={events[1].title} 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-5 left-5 z-20">
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-neon-pink transition-colors">{events[1].title}</h3>
@@ -130,6 +144,7 @@ export default function Events() {
                   alt={events[2].title} 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute bottom-5 left-5 z-20">
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-neon-pink transition-colors">{events[2].title}</h3>
@@ -146,6 +161,7 @@ export default function Events() {
                 alt={events[3].title} 
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute bottom-6 left-6 z-20">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-neon-pink transition-colors">{events[3].title}</h3>
@@ -159,6 +175,15 @@ export default function Events() {
             </div>
 
           </div>
+        </div>
+
+        <div className="flex justify-center">
+          <Link 
+            to="/#international-artists" 
+            className="inline-block px-8 py-4 bg-neon-pink text-black font-bold uppercase tracking-widest hover:bg-white transition-colors clickable hover-glow shadow-[0_0_15px_rgba(255,0,122,0.5)] animate-subtle-glow text-center text-sm"
+          >
+            Ver oportunidades
+          </Link>
         </div>
 
       </div>

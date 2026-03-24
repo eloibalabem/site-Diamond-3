@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Music } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // Map sections to their main images for prefetching
 const sectionImages: Record<string, string[]> = {
@@ -28,6 +29,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,6 +58,25 @@ export default function Navbar() {
         const img = new Image();
         img.src = src;
       });
+    }
+  };
+
+  const handleLinkClick = (link: string) => {
+    setIsOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.querySelector(link);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.querySelector(link);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -100,11 +122,18 @@ export default function Navbar() {
         hidden ? '-translate-y-full' : 'translate-y-0'
       } ${scrolled ? 'bg-deep-black/80 backdrop-blur-md py-4 border-b border-white/10' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center relative">
-        <a href="#home" className="brand-logo flex items-center gap-2 group clickable logo-modern-hover">
+        <a href="#home" onClick={() => {
+            if (location.pathname !== '/') {
+                navigate('/');
+                setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }} className="brand-logo flex items-center gap-2 group clickable logo-modern-hover">
           <img 
-            src="https://raw.githubusercontent.com/eloi-balabem/diamond/main/fundo%20transparente.gif" 
+            src="https://raw.githubusercontent.com/eloibalabem/diamondmusic/main/logo%20Diamond%203d-%20transparente.webp" 
             alt="Diamond Music Logo" 
-            className="h-16 w-auto object-contain opacity-0" 
+            className="h-16 w-auto object-contain" 
             fetchPriority="high"
             decoding="sync"
           />
@@ -122,15 +151,14 @@ export default function Navbar() {
         <div className={`mobile-menu absolute top-full right-6 mt-4 w-64 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden z-40 transform origin-top-right transition-all duration-500 shadow-[0_20px_60px_rgba(0,0,0,0.35)] ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}>
           <div className="flex flex-col py-6 px-8 gap-6">
             {links.map((item, idx) => (
-              <a 
+              <button 
                 key={item.name} 
-                href={item.link} 
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleLinkClick(item.link)}
                 onMouseEnter={() => handlePrefetch(item.link)}
-                className="mobile-link text-lg uppercase tracking-widest hover:text-neon-pink transition-colors clickable relative w-fit after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-[1px] after:bg-neon-pink after:transition-all hover:after:w-full"
+                className="mobile-link text-lg uppercase tracking-widest hover:text-neon-pink transition-colors clickable relative w-fit after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-[1px] after:bg-neon-pink after:transition-all hover:after:w-full text-left"
               >
                 {item.name}
-              </a>
+              </button>
             ))}
           </div>
         </div>
