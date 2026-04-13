@@ -177,6 +177,16 @@ export default function Hero() {
         <p className="hero-subtitle text-base md:text-xl text-gray-300 font-light tracking-wide mb-12 max-w-2xl mx-auto drop-shadow-md">
           A fusão perfeita entre tecnologia, arte e impacto.
         </p>
+
+        <div className="hero-btn flex flex-col sm:flex-row items-center justify-center gap-6">
+          <button 
+            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-10 py-4 bg-neon-pink text-black font-bold uppercase tracking-[0.2em] hover:bg-white transition-all duration-300 clickable hover-glow shadow-[0_0_20px_rgba(255,0,122,0.4)] btn-press group relative overflow-hidden"
+          >
+            <span className="relative z-10">Explorar</span>
+            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          </button>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

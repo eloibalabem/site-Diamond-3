@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Preloader from './components/Preloader';
 import Home from './pages/Home';
+import Artists from './pages/Artists';
 
 export default function App() {
   const [preloaderDone, setPreloaderDone] = useState(false);
@@ -13,6 +14,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/artists" element={<Artists />} />
           </Routes>
         </BrowserRouter>
       </div>

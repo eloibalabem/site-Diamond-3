@@ -5,10 +5,23 @@ import { X } from 'lucide-react';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  artists: string[];
 }
 
-export default function InternationalArtistsModal({ isOpen, onClose, artists }: ModalProps) {
+const artistCategories = {
+  "Pop & Icons": ["Adele", "Celine Dion", "Beyoncé", "Taylor Swift", "Ed Sheeran", "Billie Eilish", "Olivia Rodrigo", "Harry Styles", "Alicia Keys", "Mariah Carey", "Katy Perry", "Shakira", "Madonna", "Gwen Stefani", "Christina Aguilera", "P!nk", "Jennifer Lopez", "Justin Timberlake", "Shania Twain", "Diana Ross"],
+  "Rock & Bands": ["Paul McCartney", "Coldplay", "Foo Fighters", "Red Hot Chili Peppers", "Arctic Monkeys", "The Killers", "Imagine Dragons", "U2", "Bon Jovi", "Bruce Springsteen", "Rod Stewart", "Stevie Wonder", "KC and the Sunshine Band", "Eagles", "Gipsy Kings", "Earth, Wind & Fire", "Chicago", "The Beach Boys", "Kool & the Gang", "Duran Duran", "Depeche Mode", "Pet Shop Boys", "Simple Minds", "A-ha"],
+  "K-Pop & Global": ["Blackpink", "BTS", "Stray Kids", "Ateez", "NewJeans"],
+  "Hip-Hop & R&B": ["Usher", "Eminem", "Mary J. Blige", "Janet Jackson", "Lenny Kravitz", "Sting"]
+};
+
+const categoryColors = {
+  "Pop & Icons": "border-neon-pink text-neon-pink hover:bg-neon-pink/10",
+  "Rock & Bands": "border-neon-purple text-neon-purple hover:bg-neon-purple/10",
+  "K-Pop & Global": "border-brand-red text-brand-red hover:bg-brand-red/10",
+  "Hip-Hop & R&B": "border-white/30 text-white hover:bg-white/10"
+};
+
+export default function InternationalArtistsModal({ isOpen, onClose }: ModalProps) {
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -132,14 +145,21 @@ export default function InternationalArtistsModal({ isOpen, onClose, artists }: 
                       <p className="text-gray-400 text-xs md:text-sm uppercase tracking-widest">Conexões diretas com os maiores escritórios do mundo</p>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-                      {artists.map((artist, idx) => (
-                        <span 
-                          key={idx} 
-                          className="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 border border-white/10 rounded-full text-xs md:text-base text-gray-300 hover:text-white hover:border-neon-pink hover:bg-neon-pink/10 transition-all duration-300 cursor-default"
-                        >
-                          {artist}
-                        </span>
+                    <div className="space-y-8">
+                      {Object.entries(artistCategories).map(([category, categoryArtists]) => (
+                        <div key={category}>
+                          <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-4 border-l-2 border-neon-pink pl-3">{category}</h4>
+                          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+                            {categoryArtists.map((artist, idx) => (
+                              <span 
+                                key={idx} 
+                                className={`px-3 py-1.5 md:px-4 md:py-2 bg-white/5 border rounded-full text-xs md:text-sm transition-all duration-300 cursor-default hover:scale-110 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] ${categoryColors[category as keyof typeof categoryColors]}`}
+                              >
+                                {artist}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </motion.div>

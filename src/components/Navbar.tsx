@@ -9,6 +9,13 @@ const sectionImages: Record<string, string[]> = {
   '#home': [
     'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=60&w=1600&auto=format&fit=crop'
   ],
+  '#about': [
+    'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=60&w=800&auto=format&fit=crop'
+  ],
+  '#leadership': [
+    'https://raw.githubusercontent.com/eloibalabem/diamondmusic/main/gustavo%202.jpg',
+    'https://raw.githubusercontent.com/eloibalabem/diamondmusic/main/henrique2%20(1).jpg'
+  ],
   '#services': [
     'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=60&w=800&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1511578314322-379afb476865?q=60&w=800&auto=format&fit=crop',
@@ -16,10 +23,11 @@ const sectionImages: Record<string, string[]> = {
     'https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?q=60&w=800&auto=format&fit=crop',
     'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=60&w=800&auto=format&fit=crop'
   ],
-  '#cases': [
-    'https://images.unsplash.com/photo-1470229722913-7c090be5f524?q=60&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=60&w=800&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=60&w=800&auto=format&fit=crop'
+  '#testimonials': [
+    'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=60&w=800&auto=format&fit=crop'
+  ],
+  '#dreams': [
+    'https://i.postimg.cc/XYwvXN8D/img-4.png'
   ],
   '#contact': []
 };
@@ -106,9 +114,11 @@ export default function Navbar() {
 
   const links = [
     { name: 'Início', link: '#home' },
+    { name: 'Sobre', link: '#about' },
     { name: 'Serviços', link: '#services' },
-    { name: 'Contato', link: '#contact' },
-    { name: 'Cases', link: '#cases' }
+    { name: 'Artistas', link: '#international-artists' },
+    { name: 'Eventos', link: '#events' },
+    { name: 'Contato', link: '#contact' }
   ];
 
   return (
@@ -129,7 +139,7 @@ export default function Navbar() {
             } else {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }} className="brand-logo flex items-center gap-2 group clickable logo-modern-hover">
+        }} className="brand-logo nav-logo flex items-center gap-2 group clickable logo-modern-hover">
           <img 
             src="https://raw.githubusercontent.com/eloibalabem/diamondmusic/main/logo%20Diamond%203d-%20transparente.webp" 
             alt="Diamond Music Logo" 

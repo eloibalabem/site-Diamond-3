@@ -51,10 +51,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       const navRect = navLogo.getBoundingClientRect();
       const logoRect = logoRef.current.getBoundingClientRect();
       
-      // Calculate center-to-center translation
-      targetX = navRect.left + navRect.width / 2 - (window.innerWidth / 2);
-      targetY = navRect.top + navRect.height / 2 - (window.innerHeight / 2);
-      targetScale = navRect.height / logoRect.height;
+      if (navRect && logoRect) {
+        // Calculate center-to-center translation
+        targetX = navRect.left + navRect.width / 2 - (window.innerWidth / 2);
+        targetY = navRect.top + navRect.height / 2 - (window.innerHeight / 2);
+        targetScale = navRect.height / logoRect.height;
+      }
     }
 
     tl.to(logoRef.current, {

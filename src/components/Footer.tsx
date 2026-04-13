@@ -21,9 +21,12 @@ export default function Footer() {
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {[
               { name: 'Sobre', link: '#about' },
-              { name: 'Eventos', link: '#events' },
+              { name: 'Liderança', link: '#leadership' },
               { name: 'Serviços', link: '#services' },
+              { name: 'Artistas', link: '#international-artists' },
+              { name: 'Eventos', link: '#events' },
               { name: 'Experiência', link: '#experience' },
+              { name: 'Depoimentos', link: '#testimonials' },
               { name: 'Contato', link: '#contact' }
             ].map((item) => (
               <a key={item.name} href={item.link} className="text-sm uppercase tracking-widest text-gray-400 hover:text-neon-pink transition-colors clickable">

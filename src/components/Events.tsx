@@ -11,25 +11,25 @@ const events = [
   {
     title: "Neon Horizon",
     location: "SÃO PAULO, BRASIL",
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=1000&auto=format&fit=crop",
     large: true
   },
   {
     title: "Electric Dreams",
     location: "RIO DE JANEIRO, BRASIL",
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1000&auto=format&fit=crop",
     large: false
   },
   {
     title: "Midnight Sun",
     location: "LISBOA, PORTUGAL",
-    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86578?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=1000&auto=format&fit=crop",
     large: false
   },
   {
     title: "Urban Pulse",
     location: "MIAMI, EUA",
-    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1533174000265-e8cb97092ba3?q=80&w=1000&auto=format&fit=crop",
     wide: true
   }
 ];
@@ -157,10 +157,9 @@ export default function Events() {
             <div className="event-card relative rounded-2xl overflow-hidden h-[200px] sm:h-[250px] group cursor-pointer">
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
               <img 
-                src={events[3].image} 
+                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1000&auto=format&fit=crop" 
                 alt={events[3].title} 
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute bottom-6 left-6 z-20">
@@ -175,15 +174,6 @@ export default function Events() {
             </div>
 
           </div>
-        </div>
-
-        <div className="flex justify-center">
-          <Link 
-            to="/#international-artists" 
-            className="inline-block px-8 py-4 bg-neon-pink text-black font-bold uppercase tracking-widest hover:bg-white transition-colors clickable hover-glow shadow-[0_0_15px_rgba(255,0,122,0.5)] animate-subtle-glow text-center text-sm"
-          >
-            Ver oportunidades
-          </Link>
         </div>
 
       </div>

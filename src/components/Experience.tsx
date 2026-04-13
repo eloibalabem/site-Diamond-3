@@ -35,6 +35,14 @@ export default function Experience() {
       .fromTo('.exp-gif-container', { scale: 0.95, opacity: 0, filter: 'blur(10px)' }, { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 1, ease: 'power2.out' }, '-=0.8')
       .fromTo('.exp-diamond', { scale: 0, rotation: -45, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 1.5, ease: 'elastic.out(1, 0.5)' }, '-=0.5');
 
+    // Continuous slow rotation for the diamond
+    // gsap.to('.exp-diamond-img', {
+    //   rotation: 360,
+    //   duration: 20,
+    //   repeat: -1,
+    //   ease: 'none'
+    // });
+
   }, { scope: containerRef });
 
   return (
@@ -93,19 +101,6 @@ export default function Experience() {
           {/* Right Content - Cinematic GIF */}
           <div className="w-full lg:w-7/12 exp-gif-container relative mt-12 lg:mt-0">
             
-            {/* 3D Diamond Element (Optimized CSS/Image approach) */}
-            <div className="absolute -top-12 -right-8 md:-top-20 md:-right-12 z-30 w-40 h-40 md:w-64 md:h-64 exp-diamond pointer-events-none">
-              <div className="relative w-full h-full flex items-center justify-center">
-                <div className="absolute inset-0 bg-neon-pink/30 rounded-full blur-[40px]"></div>
-                <div className="absolute inset-0 bg-neon-purple/20 rounded-full blur-[60px] translate-x-4 translate-y-4"></div>
-                <img 
-                  src="https://raw.githubusercontent.com/eloibalabem/diamondmusic/main/logo%20diamond%20(webp).webp" 
-                  alt="Diamond 3D" 
-                  className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,0,122,0.8)]"
-                />
-              </div>
-            </div>
-
             <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(122,0,255,0.2)] group aspect-video lg:aspect-[16/10]">
               {/* Overlay gradient for cinematic feel */}
               <div className="absolute inset-0 bg-gradient-to-tr from-deep-black via-transparent to-neon-purple/20 z-10 mix-blend-overlay"></div>
