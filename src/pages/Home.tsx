@@ -12,6 +12,7 @@ import Experience from '../components/Experience';
 import Testimonials from '../components/Testimonials';
 import HeroFuturistic from '../components/ui/hero-futuristic';
 import Contact from '../components/Contact';
+import Press from '../components/Press';
 import Footer from '../components/Footer';
 import InternationalArtistsSection from '../components/InternationalArtistsSection';
 import AudioPlayer from '../components/AudioPlayer';
@@ -194,13 +195,13 @@ export default function Home() {
             <About />
           </div>
           <div className="organic-divider-top organic-divider-bottom">
+            <InternationalArtistsSection />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
             <Leadership />
           </div>
           <div className="organic-divider-top organic-divider-bottom">
             <Services />
-          </div>
-          <div className="organic-divider-top organic-divider-bottom">
-            <InternationalArtistsSection />
           </div>
           <div className="organic-divider-top organic-divider-bottom">
             <Events />
@@ -210,6 +211,9 @@ export default function Home() {
           </div>
           <div className="organic-divider-top organic-divider-bottom">
             <Testimonials />
+          </div>
+          <div className="organic-divider-top organic-divider-bottom">
+            <Press />
           </div>
           <div className="organic-divider-top organic-divider-bottom">
             <HeroFuturistic />

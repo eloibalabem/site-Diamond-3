@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,6 +8,27 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const containerRef = useRef(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const phoneNum = "5511978759905";
+    const text = `*Contato pelo Site*%0A%0A*Nome:* ${formData.name}%0A*E-mail:* ${formData.email}%0A*Telefone:* ${formData.phone}%0A*Mensagem:* ${formData.message}`;
+    
+    window.open(`https://wa.me/${phoneNum}?text=${text}`, '_blank');
+    
+    setFormData({ name: '', email: '', phone: '', message: '' });
+  };
 
   useGSAP(() => {
     gsap.to('.animated-divider-contact', {
@@ -54,26 +75,26 @@ export default function Contact() {
             </h3>
             <p className="text-gray-400 mb-8">Pronto para criar algo inesquecível? Vamos conversar.</p>
             
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2 input-underline">
                   <label className="text-xs uppercase tracking-widest text-gray-500">Nome</label>
-                  <input type="text" className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm" />
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm" />
                 </div>
                 <div className="space-y-2 input-underline">
                   <label className="text-xs uppercase tracking-widest text-gray-500">E-mail</label>
-                  <input type="email" className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm" />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm" />
                 </div>
               </div>
               
               <div className="space-y-2 input-underline">
                 <label className="text-xs uppercase tracking-widest text-gray-500">Telefone</label>
-                <input type="tel" className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm" />
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm" />
               </div>
               
               <div className="space-y-2 input-underline">
                 <label className="text-xs uppercase tracking-widest text-gray-500">Mensagem</label>
-                <textarea rows={4} className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm"></textarea>
+                <textarea rows={4} name="message" value={formData.message} onChange={handleChange} required className="w-full bg-white/5 border border-white/10 border-b-0 p-4 text-white focus:bg-white/10 focus:outline-none transition-colors rounded-t-sm"></textarea>
               </div>
               
               <button type="submit" className="btn-press w-full py-4 bg-neon-pink text-black font-bold uppercase tracking-widest hover:bg-white transition-colors clickable hover-glow shadow-[0_0_15px_rgba(255,0,122,0.5)] hover:shadow-[0_0_25px_rgba(255,0,122,0.8)] magnetic-pop">
@@ -97,11 +118,11 @@ export default function Contact() {
                   </li>
                   <li className="flex items-center gap-4 group">
                     <Mail className="text-neon-pink w-6 h-6 icon-spin-hover" />
-                    <a href="mailto:contato@diamondmusic.com" className="text-gray-400 hover:text-white transition-colors clickable">contato@diamondmusic.com</a>
+                    <a href="mailto:contato@diamondmusic.com.br" className="text-gray-400 hover:text-white transition-colors clickable">contato@diamondmusic.com.br</a>
                   </li>
                   <li className="flex items-center gap-4 group">
                     <Phone className="text-neon-pink w-6 h-6 icon-spin-hover" />
-                    <span className="text-gray-400">+55 (11) 99999-9999</span>
+                    <span className="text-gray-400">(11) 97875-9905</span>
                   </li>
                 </ul>
               </div>
@@ -110,7 +131,7 @@ export default function Contact() {
                 <h3 className="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">Siga-nos</h3>
                 <div className="flex gap-4">
                   {[Instagram].map((Icon, i) => (
-                    <a key={i} href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-neon-pink hover:border-neon-pink hover:text-black transition-all clickable hover-glow">
+                    <a key={i} href="https://www.instagram.com/diamondmusicoficial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-neon-pink hover:border-neon-pink hover:text-black transition-all clickable hover-glow">
                       <Icon className="w-5 h-5" />
                     </a>
                   ))}

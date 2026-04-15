@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -34,7 +35,9 @@ export default function InternationalArtistsModal({ isOpen, onClose }: ModalProp
     };
   }, [isOpen]);
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-6">
@@ -238,6 +241,7 @@ export default function InternationalArtistsModal({ isOpen, onClose }: ModalProp
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

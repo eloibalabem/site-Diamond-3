@@ -113,7 +113,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto overflow-hidden px-4 md:px-12">
+      <div className="relative max-w-7xl mx-auto px-4 md:px-12 py-4">
         <Swiper
           modules={[FreeMode, Autoplay]}
           spaceBetween={24}
@@ -145,13 +145,6 @@ export default function Testimonials() {
                 </p>
                 
                 <div className="flex items-center gap-3 mt-auto">
-                  <img 
-                    src={testimonial.photo} 
-                    alt={testimonial.name} 
-                    className="w-10 h-10 rounded-full object-cover border-2 border-neon-pink/50"
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
                   <div>
                     <h4 className="text-white font-bold text-sm">{testimonial.name}</h4>
                     <p className="text-neon-pink text-[10px] tracking-wider uppercase">{testimonial.company}</p>

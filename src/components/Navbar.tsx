@@ -118,6 +118,7 @@ export default function Navbar() {
     { name: 'Serviços', link: '#services' },
     { name: 'Artistas', link: '#international-artists' },
     { name: 'Eventos', link: '#events' },
+    { name: 'Imprensa', link: '#press' },
     { name: 'Contato', link: '#contact' }
   ];
 

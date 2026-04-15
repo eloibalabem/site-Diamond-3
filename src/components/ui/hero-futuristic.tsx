@@ -204,7 +204,7 @@ export const HeroFuturistic = () => {
     <div id="dreams" className="w-full h-svh relative overflow-hidden bg-deep-black">
       <div className="h-svh uppercase items-center w-full absolute z-60 pointer-events-none px-10 flex justify-center flex-col">
         <div className="text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold">
-          <div className="flex space-x-2 lg:space-x-6 overflow-hidden text-white">
+          <div className="flex space-x-2 lg:space-x-6 overflow-hidden text-neon-pink">
             {titleWords.map((word, index) => (
               <div
                 key={index}
@@ -216,7 +216,7 @@ export const HeroFuturistic = () => {
             ))}
           </div>
         </div>
-        <div className="text-xs md:text-xl xl:text-2xl 2xl:text-3xl mt-2 overflow-hidden text-white font-bold">
+        <div className="text-xs md:text-xl xl:text-2xl 2xl:text-3xl mt-2 overflow-hidden text-white font-light italic">
           <div
             className={subtitleVisible ? 'fade-in-subtitle' : ''}
             style={{ animationDelay: `${titleWords.length * 0.13 + 0.2 + subtitleDelay}s`, opacity: subtitleVisible ? undefined : 0 }}

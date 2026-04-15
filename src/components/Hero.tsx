@@ -109,7 +109,7 @@ export default function Hero() {
 
       {/* Background (Prepared for future video) */}
       <div className="hero-bg absolute inset-0 w-full h-full z-0 bg-transparent">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 md:from-black/40 via-black/80 md:via-black/60 to-transparent z-10"></div>
         {/* Future Video Tag can replace this img */}
         <img 
           src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=60&w=1600&auto=format&fit=crop" 
@@ -119,7 +119,7 @@ export default function Hero() {
           decoding="sync"
         />
         {/* Overlay Effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon-purple/20 via-neon-pink/5 to-transparent opacity-60 z-10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon-purple/20 via-neon-pink/5 to-transparent opacity-60 z-10 hidden md:block"></div>
       </div>
 
       {/* Strip Animation Overlay */}
@@ -181,7 +181,7 @@ export default function Hero() {
         <div className="hero-btn flex flex-col sm:flex-row items-center justify-center gap-6">
           <button 
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-10 py-4 bg-neon-pink text-black font-bold uppercase tracking-[0.2em] hover:bg-white transition-all duration-300 clickable hover-glow shadow-[0_0_20px_rgba(255,0,122,0.4)] btn-press group relative overflow-hidden"
+            className="px-6 py-3 text-sm bg-neon-pink text-black font-bold uppercase tracking-[0.2em] hover:bg-white transition-all duration-300 clickable hover-glow shadow-[0_0_20px_rgba(255,0,122,0.4)] btn-press group relative overflow-hidden"
           >
             <span className="relative z-10">Explorar</span>
             <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
